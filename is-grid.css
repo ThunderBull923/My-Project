@@ -1,0 +1,71 @@
+@boxWidth: 960px;
+@sideWidth: 200px;
+@mainWidth: @boxWidth - @sideWidth;
+@unit: 1em;
+@c-bad-2: #fff2f0;
+@c-bad-4: #e6b4b1;
+@c-good-4: #d1ffed;
+@c-good-6: #7fffd4;
+
+.checkbox {
+  display: block;
+  height: 2 * @unit;
+  margin: @unit 0;
+  width: 2 * @unit;
+}
+
+.box {
+  background-color: @c-bad-2;
+  margin: auto;
+  max-width: 1200px;
+
+  &:after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+
+  &__side {
+    background-color: @c-bad-2;
+    padding: @unit;
+  }
+
+  &__main {
+    background-color: @c-bad-4;
+    padding: @unit;
+  }
+}
+
+.menu {
+  &__item {
+    color: #2f54eb;
+    display: block;
+    padding: 4px;
+    text-decoration: none;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.checkbox:checked + .box {
+  background-color: @c-good-4;
+
+  .box__side {
+    background-color: @c-good-4;
+    float: left;
+    width: percentage(@sideWidth / @boxWidth);
+  }
+
+  .box__main {
+    background-color: @c-good-6;
+    float: left;
+    overflow: hidden;
+    width: percentage(@mainWidth / @boxWidth);
+  }
+}
